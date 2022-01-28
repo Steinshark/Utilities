@@ -1,4 +1,4 @@
-## build a graph 
+## build a graph
 
 
 class Edge:
@@ -6,6 +6,8 @@ class Edge:
         self.nodeA = nodeA
         self.nodeB = nodeB
         self.weight = weight
+
+
 class AdjacencyMatrix:
     def __init__(self,nodesList,isDirected,isWeighted):
         self.isDirected = isDirected
@@ -13,13 +15,13 @@ class AdjacencyMatrix:
         self.adjacencyMatrix = {node : {node : None for node in nodesList} for node in nodesList}
 
     def connect(self,nodeA,nodeB,weight=None):
-        # Weighted graph 
+        # Weighted graph
         if self.isWeighted:
             if weight is None:
                 print(f'Adding {nodeA} -> {nodeB} failed. No weight specified for weighted graph.')
             else:
-                self.adjacencyMatrix[nodeA][nodeB] = weight 
-            
+                self.adjacencyMatrix[nodeA][nodeB] = weight
+
             if not self.isDirected:
                 self.adjacencyMatrix[nodeB][nodeA] = weight
         # Unweighted graph
@@ -30,18 +32,22 @@ class AdjacencyMatrix:
 
     def isConnected(self,nodeA,nodeB):
         return not self.adjacencyMatrix[nodeA][nodeB] is None
-    
+
     def getNeighbors(self,nodeA):
         return self.adjacencyMatrix[nodeA]
-    
+
     def getConnection(self,nodeA,nodeB):
         if not isConnected(nodeA,nodeB):
             print(f'Graph does not hold {nodeA}->{nodeB}')
-            return 
+            return
         else:
             return self.adjacencyMatrix[nodeA][nodeB]
 
-     
+    def __repr__(self):
+        s = ''
+        for node in self.adjacencyMatrix:
+            s += f"{node}: {[self.adjacencyMatrix[node][n] for n in self.adjacencyMatrix[node] if self.adjacencyMatrix[node][n] is not None or not False ]}\n"
+        return s
 class Graph:
     def __init__(self,nodesList,isDirected,isWeighted):
         self.nodes = nodesList
@@ -55,6 +61,8 @@ class Graph:
     def getConnection(nodeA,nodeB):
         return self.connections.getConection(nodeA,nodeB)
 
+
+
 if __name__ == '__main__':
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     import random
@@ -63,4 +71,4 @@ if __name__ == '__main__':
         for letter2 in alphabet:
             if random.randint(0,4) % 3 == 0:
                 g.connect(letter,letter2)
-
+    print(g.connections)

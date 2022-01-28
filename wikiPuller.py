@@ -1,7 +1,9 @@
 from requests import get
 from re import findall
 from json import dumps
-
+import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class Grapher:
     def __init__(self,start_url):
         self.visited = {}
@@ -32,7 +34,7 @@ class Grapher:
         print(f"total: {len(self.finished)} : found: {base_url}")
         print(f"node connections: {len(self.connections)} ")
         finds = []
-        raw_data = get(f"https://en.wikipedia.org/wiki/{base_url}").content.decode()
+        raw_data = get(f"https://en.wikipedia.org/wiki/{base_url}",verify=False).content.decode()
         branches = self.find_branches(raw_data)
         for name in branches:
             self.connections[base_url] = {name : True}
@@ -52,7 +54,12 @@ class Grapher:
             try:
                 self.scrape(operating_node)
             except:
-                self.scrape(operating_node)
+                try:
+                    self.scrape(operating_node)
+                except:
+                    self.finished[operating_node] = True
+
+
             del self.visited[operating_node]
 
 if __name__ == "__main__":
