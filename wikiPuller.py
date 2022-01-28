@@ -1,6 +1,7 @@
 from requests import get
 from re import findall
 from json import dumps
+
 class Grapher:
     def __init__(self,start_url):
         self.visited = {}
@@ -48,10 +49,11 @@ class Grapher:
         while self.visited:
             iter += 1
             operating_node = list(self.visited.keys())[0]
-            self.scrape(operating_node)
+            try:
+                self.scrape(operating_node)
+            except:
+                self.scrape(operating_node)
             del self.visited[operating_node]
-
-
 
 if __name__ == "__main__":
     g = Grapher('Ba_Congress')
