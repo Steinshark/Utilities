@@ -36,11 +36,10 @@ class Grapher:
         finds = []
         raw_data = get(f"https://en.wikipedia.org/wiki/{base_url}",verify=False).content.decode()
         branches = self.find_branches(raw_data)
+        self.connections[base_url] = {}
         for name in branches:
-            self.connections[base_url] = {name : True}
-            if not name in self.finished:
-                self.connections[name] = {base_url : True}
-                self.visited[name] = True
+            self.connections[base_url][name] = True
+            self.visited[name] = True
         return
 
     def scraper(self,url):
@@ -56,9 +55,6 @@ class Grapher:
                     self.scrape(operating_node)
                 except:
                     self.scrape(operating_node)
-            self.finished[operating_node] = True
-
-
             del self.visited[operating_node]
 
 if __name__ == "__main__":
