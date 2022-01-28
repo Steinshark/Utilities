@@ -37,6 +37,10 @@ class Trader:
 
     def history(self,name):
         get_stock_historicals()
+
+
+    def get_full_dataset(self):
+
     def graph_history(self,names,interval='10minute',span='week'):
         r = get_stock_historicals(names,interval=interval,span=span)
         x_vals = []
