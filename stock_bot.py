@@ -40,20 +40,22 @@ class Trader:
 
 
     def get_full_dataset(self):
+        pass
 
-    def graph_history(self,names,interval='10minute',span='week'):
-        r = get_stock_historicals(names,interval=interval,span=span)
+    def graph_history(self,names,interval='hour',span='day'):
+        data = get_stock_historicals(names,interval=interval,span=span)
         x_vals = []
         y_vals = []
+        print(data)
+        input()
         for timeStamp in r:
-            for key in timeStamp:
-                print(key)
             x_vals.append(timeStamp['begins_at'])
             y_vals.append(float(timeStamp['high_price']))
         plt.scatter(x_vals,y_vals,s=1)
+        plt.show()
 
 
 
 current_trader = Trader()
 current_trader.login("everetts","NAVYlaptop52!!",expires=24*60*60)
-current_trader.graph_history("aapl",)
+current_trader.graph_history(["aapl","sphd"],)
