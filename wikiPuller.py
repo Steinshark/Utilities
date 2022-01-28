@@ -38,10 +38,8 @@ class Grapher:
         branches = self.find_branches(raw_data)
         for name in branches:
             self.connections[base_url] = {name : True}
-            self.connections[name] = {base_url : True}
-
-        for name in branches:
             if not name in self.finished:
+                self.connections[name] = {base_url : True}
                 self.visited[name] = True
         return
 
@@ -57,7 +55,8 @@ class Grapher:
                 try:
                     self.scrape(operating_node)
                 except:
-                    self.finished[operating_node] = True
+                    self.scrape(operating_node)
+            self.finished[operating_node] = True
 
 
             del self.visited[operating_node]
