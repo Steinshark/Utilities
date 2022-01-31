@@ -9,6 +9,7 @@ class Grapher:
         self.visited = {}
         self.connections = {}
         self.finished = {}
+        self.edges = 0
         self.scraper(start_url)
 
     def find_branches(self,raw_data):
@@ -32,12 +33,13 @@ class Grapher:
     def scrape(self,base_url):
         self.finished[base_url] = True
         print(f"total: {len(self.finished)} : found: {base_url}")
-        print(f"node connections: {len(self.connections)} ")
+        print(f"nodes: {len(self.connections)}\nedges: {self.edges}")
         finds = []
         raw_data = get(f"https://en.wikipedia.org/wiki/{base_url}",verify=False).content.decode()
         branches = self.find_branches(raw_data)
         self.connections[base_url] = {}
         for name in branches:
+            self.edges += 1
             self.connections[base_url][name] = True
             self.visited[name] = True
         return
@@ -45,7 +47,7 @@ class Grapher:
     def scraper(self,url):
         self.visited[url] = True
         iter = 0
-        while self.visited:
+        while self.visited and self.edges < 1000000:
             iter += 1
             operating_node = list(self.visited.keys())[0]
             try:
@@ -54,7 +56,11 @@ class Grapher:
                 try:
                     self.scrape(operating_node)
                 except:
-                    self.scrape(operating_node)
+                    try:
+                        self.scrape(operating_node)
+                    except:
+                        del self.visited[operating_node]
+
             del self.visited[operating_node]
 
 if __name__ == "__main__":

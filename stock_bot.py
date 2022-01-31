@@ -13,6 +13,10 @@ class TradeException (Exception):
             super().__init__(msg)
 
 
+class DataPoint:
+    def __init__(self,symol):
+        self.symbol =
+        self.price_history
 
 class Trader:
     def __init__(self):
