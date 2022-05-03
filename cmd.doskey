@@ -1,0 +1,7 @@
+ls=dir
+cat = type 
+server = ssh everettperson@gmail.com@70.106.17.101
+lab = ssh m226252@midn.cs.usna.edu
+hpc = ssh m226252@borg.hpc.usna.edu
+gitter = git pull && git add . && git commit -m "anotha one -laptop side" && git push
+ml = cd / && C: && cd C:\Classes\si470 && conda activate gputf

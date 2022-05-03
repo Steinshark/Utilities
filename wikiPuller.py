@@ -35,7 +35,7 @@ class Grapher:
         print(f"total: {len(self.finished)} : found: {base_url}")
         print(f"nodes: {len(self.connections)}\nedges: {self.edges}")
         finds = []
-        raw_data = get(f"https://en.wikipedia.org/wiki/{base_url}",verify=False).content.decode()
+        raw_data = get(f"https://en.wikipedia.org/wiki/{base_url}",verify=False,timeout=4).content.decode()
         branches = self.find_branches(raw_data)
         self.connections[base_url] = {}
         for name in branches:
