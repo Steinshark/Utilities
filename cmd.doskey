@@ -5,3 +5,5 @@ lab = ssh m226252@midn.cs.usna.edu
 hpc = ssh m226252@borg.hpc.usna.edu
 gitter = git pull && git add . && git commit -m "anotha one -laptop side" && git push
 ml = cd / && C: && cd C:\Classes\si470 && conda activate gputf
+s = sublime_text
+chess = E: && cd \ && cd E:\projects\chess && conda activate tf

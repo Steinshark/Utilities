@@ -16,7 +16,6 @@ class TradeException (Exception):
         def __init__(self,msg):
             super().__init__(msg)
 
-
 class DataPoint:
 
     fields = [
@@ -143,9 +142,6 @@ class DataPoint:
             file.write(line)
         file.close()
 
-
-
-
 class Trader:
     def __init__(self):
         self.ownership = {}
@@ -197,6 +193,20 @@ class StockHandler:
 
 current_trader = Trader()
 current_trader.login("everettperson@gmail.com","NAVYlaptop52!!",expires=24*60*60)
-dp = DataPoint("AAPL")
-dp.collect_fields()
-dp.write_results()
+for ticker in ["AAPL","MSFT","AMZN","GOOG","TSLA"]:
+    dp = DataPoint(ticker)
+    dp.collect_fields()
+    dp.write_results()
+
+
+
+throttleposition = findViewById(R.id.throttleposition)
+massairflow = findViewById(R.id.massairflow)
+intakeairtemp = findViewById(R.id.intakeairtemp)
+enginecoolanttemp = findViewById(R.id.enginecoolanttemp)
+intakemanifoldpsi = findViewById(R.id.intakemanifoldpsi)
+timingadvance = findViewById(R.id.timingadvance)
+engineruntime = findViewById(R.id.engineruntime)
+engineload = findViewById(R.id.engineload)
+vin = findViewById(R.id.vin)
+fuelpressure = findViewById(R.id.fuelpressure)
