@@ -21,5 +21,32 @@
 (["I have 10 motherboards and 15 CPUs. How many gaming PCs will I be able to sell if I have all the other items required to build them?"],["Given that each PC will require its own motherboard and its own CPU, you will be limited by the component that you have the least of. Since you only have 10 motherboards, that will limit you to building only 10 computers unless you buy more."]),
 (["I have one nickel, 3 dimes, and Q quartes. If I have $1.10, how many quarters (Q) do I have?"],["You have 5 cents from the nickel, 30 cents from the dimes, and an unkown number of quarters Q. We can write the expression 5 + 30 + 25*Q = 110, and rearrange it to find that 25*Q = 75. Divide both sides by 25 and we find that Q = 75/25, or Q = 3. You have 3 quarters!"]),
 (["Joshua can only go to work at the store on Saturdays and Fridays. Vien can work on any day besides Saturday and Sunday. What day can the both go to work on?"],["For both of them to work on the same day, if a solution exists, then it has to be on Saturday or Friday due to Joshua's constraint. Vien cant work on Saturday, so that leaves only Friday available. Vien has no constraint against working on Friday, so both Joshua and Vien will be able to be at work on Friday."]),
-([""],[""]),
+(["I have red wire and a green wire. I want to cut the wire that most likely is a danger signal. Which one do I cut?"],["Cutting wires is tricky since it's hard to reverse once done. However, if a wire must be cut, then red is a more likely color to be associated with the danger signal, so the red wire should be cut."]),
+
+#Use code tool
+(["I want to take all odd numbers less than 10 and multiply them. What number do you get?"],["The odd numbers from 1-10 multiplied, will be the numbers 1,3,5,7, and 9. this is equivalent to 1 * 3 * 5 * 7 * 9, which equals <|runcode|>outputvar = 1 * 3 * 5 * 7 * 9<|runcode|>"]),
+(["In Python, what is the type of the expression: [[1.__len__()]][-1]"],["This evaluates to <|runcode|>outputvar = type([[1.__len__()]][-1])<|runcode|>"]),
+(['What is the python output of running "isinstance([None],int)"?'],['Python will return this as the expression: <|runcode|>outputvar = isinstance([None],int)<|runcode|>']),
+(["What is the sum of all numbers less than 99?"],["The sum of the integers less than 99 is <|runcode|>outputvar = sum(range(99))<|runcode|>."]),
+(["What is 192340 divided by the sum of 124 and 531?"],["That would evaluate to <|runcode|>outputvar = 192340/sum([124,531])<|runcode|>","The answer is <|runcode|>192340/(124 + 531)<|runcode|>."]),
+(["What gets returned if I divide any number by 0 in python?"],["Python throws the following exception: <|runcode|>try:
+    69 / 0
+except Exception as e:
+    outputvar = f'\"{e}\"'<|runcode|>."]),
+(["Using code, evaluate 1231*123123*9999"],["Sure, the product is <|runcode|>outputvar = 1231*123123*9999<|runcode|>."]),
+(["Use code to find the sum of all the squares up to and including 100"],["Sure, the answer is <|runcode|>outputvar = sum([i**2 for i in range(101)])<|runcode|>."]),
+(["What is 128 divided by 1.841 as an integer?"],["That integer would be <|runcode|>outputvar = int(128/1.841)<|runcode|>.","The answer is <|runcode|>outputvar = 128//1.841<|runcode|>. Any other math questions I can help with?"]),
+(["Use code display a Python list 100 elements long of None variables."],["Here is a list of 100 'None' Python instances: <|runcode|>outputvar = [None for _ in range(100)]<|runcode|>."]),
+(["What happens in code if you iterate the following 1 million times: 'a = a + (a ** .5)', where a is a randomly chosen perfect square?"],["Sure! Let's pick a random perfect square 'a' from between 1 and 1000 and see what happens! <|runcode|>import random
+a = random.randint(1,1000)
+for _ in range(1_000_000):
+  a = a + (a**.5)
+outputvar = a<|runcode|>".]),
+(["Type the letter 'h' 17 times.","Repeat the letter h 17 times.","Show me 'h' 17 times in a row."],["<|runcode|>outputvar = 'h'*17<|runcode|>"]),
+(["What is the middle letter of this string: \"asdfkjh12j34haskdhfjh455h4khkjdhfkasdfa\"?"],["That would be <|runcode|>instr = 'asdfkjh12j34haskdhfjh455h4khkjdhfkasdfa'
+outputvar = instr[len(instr)//2]<|runcode|>."]),
+(['How long is this phrase: "The quick brown fox jumps over the lazy ass dog."?'],['Your sentence is <|runcode|>phrase = "The quick brown fox jumps over the lazy ass dog."\noutputvar = len(phrase)<|runcode|> characters long and <|runcode|>phrase = "The quick brown fox jumps over the lazy ass dog."\noutputvar = len(phrase.split(" "))<|runcode|> words long.']),
+#Coding examples (not executed)
+(["Write code for a Python list of all integers that are between 1 and 178 but arent divisible by 7."],["Sure, here is your list: <|codestart|>[i for i in range(1,178) if not i % 7 == 0]<|codeend|>"]),
+([],[]),
 ]
