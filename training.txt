@@ -22,8 +22,9 @@
 (["I have one nickel, 3 dimes, and Q quartes. If I have $1.10, how many quarters (Q) do I have?"],["You have 5 cents from the nickel, 30 cents from the dimes, and an unkown number of quarters Q. We can write the expression 5 + 30 + 25*Q = 110, and rearrange it to find that 25*Q = 75. Divide both sides by 25 and we find that Q = 75/25, or Q = 3. You have 3 quarters!"]),
 (["Joshua can only go to work at the store on Saturdays and Fridays. Vien can work on any day besides Saturday and Sunday. What day can the both go to work on?"],["For both of them to work on the same day, if a solution exists, then it has to be on Saturday or Friday due to Joshua's constraint. Vien cant work on Saturday, so that leaves only Friday available. Vien has no constraint against working on Friday, so both Joshua and Vien will be able to be at work on Friday."]),
 (["I have red wire and a green wire. I want to cut the wire that most likely is a danger signal. Which one do I cut?"],["Cutting wires is tricky since it's hard to reverse once done. However, if a wire must be cut, then red is a more likely color to be associated with the danger signal, so the red wire should be cut."]),
-
 #Use code tool
+(["My python code has 12 lines and 512 characters. How many characters on average per line?"],["The average number of characters will be 512 / 12, so <runcode>outputvar = 512/12<runcode> characters per line, on average."]),
+(["I have 12 blue marbles and 15 red marbles. What are the odds that I pick out a blue, blue, then red marble without replacement?],["The first marble taken out has a 12 / 27 chance of being drawn blue. Assuming blue, blue, then red, the odds become 12 / 27 * 12-1 / 27-1 * 15 / 27-2. The odds calculate to <|runcode|>outputvar = (12/27)*((12-1)/(27-1))*(15/(27-2))<|runcode|>"]),
 (["I want to take all odd numbers less than 10 and multiply them. What number do you get?"],["The odd numbers from 1-10 multiplied, will be the numbers 1,3,5,7, and 9. this is equivalent to 1 * 3 * 5 * 7 * 9, which equals <|runcode|>outputvar = 1 * 3 * 5 * 7 * 9<|runcode|>"]),
 (["In Python, what is the type of the expression: [[1.__len__()]][-1]"],["This evaluates to <|runcode|>outputvar = type([[1.__len__()]][-1])<|runcode|>"]),
 (['What is the python output of running "isinstance([None],int)"?'],['Python will return this as the expression: <|runcode|>outputvar = isinstance([None],int)<|runcode|>']),
@@ -47,6 +48,6 @@ outputvar = a<|runcode|>".]),
 outputvar = instr[len(instr)//2]<|runcode|>."]),
 (['How long is this phrase: "The quick brown fox jumps over the lazy ass dog."?'],['Your sentence is <|runcode|>phrase = "The quick brown fox jumps over the lazy ass dog."\noutputvar = len(phrase)<|runcode|> characters long and <|runcode|>phrase = "The quick brown fox jumps over the lazy ass dog."\noutputvar = len(phrase.split(" "))<|runcode|> words long.']),
 #Coding examples (not executed)
-(["Write code for a Python list of all integers that are between 1 and 178 but arent divisible by 7."],["Sure, here is your list: <|codestart|>[i for i in range(1,178) if not i % 7 == 0]<|codeend|>"]),
-([],[]),
+(["Write code for a Python list of all integers that are between 1 and 178 but arent divisible by 7."],["Sure, here is your list: <|codestart|>#integers 1-178 that aren't divisible by 7\n[i for i in range(1,178) if not i % 7 == 0]<|codeend|>"]),
+(["Write a function in python that takes a string and returns a lowercase version. Call it \"downshift\""],["Sure, here's the code:<|codestart|>#Returns the lowercase version of a string\ndef downshift(mixed_case:str):\nreturn mixed_case.lower()<|codeend|>"]),
 ]
