@@ -8,7 +8,7 @@ from collections import Counter
 stopwords       = [] 
 
 #Subject to change 
-hash_fn         = xxhash.xxh64
+hash_fn         = xxhash.xx3_64
 hash_len        = 64
 
 #This function processess a single document for SimHash analysis 
